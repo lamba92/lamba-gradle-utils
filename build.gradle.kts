@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "com.github.lamba92"
-version = "1.0.0"
+version = TRAVIS_TAG ?: "1.0.0"
 
 repositories {
     mavenCentral()
@@ -87,3 +87,9 @@ fun Project.searchPropertyOrNull(name: String, vararg aliases: String): String? 
     return null
 
 }
+
+@Suppress("PropertyName")
+val TRAVIS_TAG
+    get() = System.getenv("TRAVIS_TAG").run {
+        if (isNullOrBlank()) null else this
+    }
