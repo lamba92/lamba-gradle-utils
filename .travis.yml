@@ -1,0 +1,16 @@
+os: linux
+language: java
+jdk: openjdk8
+
+before_script:
+  - chmod +x gradlew
+
+script: ./gradlew check --console=plain
+
+deploy:
+  provider: script
+  script: ./gradlew bintrayUpload --console=plain
+  skip_cleanup: true
+  on:
+    branch: master
+    tags: true
