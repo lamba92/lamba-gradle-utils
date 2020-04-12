@@ -33,14 +33,14 @@ dependencies {
     val androidGradlePluginVersion: String by project
 
     implementation(kotlin("stdlib-jdk8"))
-    api(kotlin("reflect"))
+    implementation(kotlin("reflect"))
+    implementation(gradleApi())
+    implementation(gradleKotlinDsl())
     api("org.jetbrains.kotlin", "kotlin-gradle-plugin", kotlinVersion)
     api("org.jetbrains.kotlin", "kotlin-serialization", kotlinVersion)
     api("com.jfrog.bintray.gradle", "gradle-bintray-plugin", bintrayPluginVersion)
     api("org.hidetake", "gradle-ssh-plugin", sshGradlePluginVersion)
     api("com.android.tools.build", "gradle", androidGradlePluginVersion)
-    api(gradleApi())
-    api(gradleKotlinDsl())
 
 }
 
