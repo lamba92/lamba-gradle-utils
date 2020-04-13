@@ -41,8 +41,8 @@ fun AndroidLibraryExtension.alignSourcesForKotlinMultiplatformPlugin(project: Pr
     }
 
 fun Project.prepareForPublication(
-    bintrayUsername: String = searchPropertyOrNull("bintrayUsername", "BINTRAY_USERNAME")!!,
-    bintrayApiKey: String = searchPropertyOrNull("bintrayApiKey", "BINTRAY_API_KEY")!!,
+    bintrayUsername: String? = searchPropertyOrNull("bintrayUsername", "BINTRAY_USERNAME"),
+    bintrayApiKey: String? = searchPropertyOrNull("bintrayApiKey", "BINTRAY_API_KEY"),
     publicationVersion: String = searchPropertyOrNull("publicationVersion") ?: project.version as String,
     publicationRepository: String = searchPropertyOrNull("publicationRepository") ?: project.group as String,
     publicationName: String = searchPropertyOrNull("publicationName") ?: rootProject.name,
