@@ -5,12 +5,26 @@ import org.gradle.api.Project
 import org.gradle.api.publish.PublishingExtension
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.getByType
+import org.jetbrains.kotlin.gradle.dsl.KotlinJsProjectExtension
+import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 
 val Project.kotlinMultiplatform
     get() = extensions.getByType<KotlinMultiplatformExtension>()
 
 fun Project.kotlinMultiplatform(action: KotlinMultiplatformExtension.() -> Unit) =
+    extensions.configure(action)
+
+val Project.kotlinJvm
+    get() = extensions.getByType<KotlinJvmProjectExtension>()
+
+fun Project.kotlinJvm(action: KotlinJvmProjectExtension.() -> Unit) =
+    extensions.configure(action)
+
+val Project.kotlinJs
+    get() = extensions.getByType<KotlinJsProjectExtension>()
+
+fun Project.kotlinJs(action: KotlinJsProjectExtension.() -> Unit) =
     extensions.configure(action)
 
 val Project.publishing
