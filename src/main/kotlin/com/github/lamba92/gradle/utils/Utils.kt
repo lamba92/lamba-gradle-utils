@@ -11,6 +11,7 @@ import org.gradle.api.Action
 import org.gradle.api.Project
 import org.gradle.api.publish.maven.MavenPublication
 import org.gradle.api.publish.maven.internal.artifact.FileBasedMavenArtifact
+import org.jetbrains.kotlin.gradle.plugin.KotlinDependencyHandler
 
 typealias AndroidLibraryPlugin = LibraryPlugin
 typealias AndroidLibraryExtension = LibraryExtension
@@ -89,3 +90,9 @@ fun Project.prepareForPublication(
         }
 
 }
+
+fun KotlinDependencyHandler.api(group: String, name: String, version: String) =
+    api("$group:$name:$version")
+
+fun KotlinDependencyHandler.implementation(group: String, name: String, version: String) =
+    implementation("$group:$name:$version")
