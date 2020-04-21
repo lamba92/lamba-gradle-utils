@@ -28,3 +28,6 @@ fun DependencyHandler.kotlinx(module: String, version: String? = null, prefix: B
 
 fun DependencyHandler.serialization(module: String, version: String? = null) =
     "org.jetbrains.kotlinx:kotlinx-serialization-$module${version?.let { ":$version" } ?: ""}"
+
+fun KotlinDependencyHandler.kodein(module: String, version: String? = null): Any =
+    "org.kodein.di:kodein-di-$module${version?.let { ":$version" } ?: ""}"
