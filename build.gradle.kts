@@ -44,14 +44,14 @@ dependencies {
 
 }
 
-val sourcesJar by tasks.registering(Jar::class) {
+val sourcesJar by tasks.creating(Jar::class) {
     archiveClassifier.set("sources")
     from(sourceSets["main"].allSource)
 }
 
-val mainPublication by publishing.publications.registering(MavenPublication::class) {
+val mainPublication by publishing.publications.creating(MavenPublication::class) {
     from(components["java"])
-    artifact(sourcesJar.get())
+    artifact(sourcesJar)
 }
 
 bintray {
