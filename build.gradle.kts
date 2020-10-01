@@ -1,5 +1,6 @@
 import com.jfrog.bintray.gradle.BintrayExtension.PackageConfig
 import com.jfrog.bintray.gradle.BintrayExtension.VersionConfig
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm")
@@ -20,7 +21,10 @@ repositories {
 kotlin {
     target {
         compilations.all {
-            kotlinOptions.jvmTarget = "1.8"
+            kotlinOptions {
+                jvmTarget = "1.8"
+                languageVersion = "1.4"
+            }
         }
     }
 }
@@ -93,3 +97,4 @@ val TRAVIS_TAG
     get() = System.getenv("TRAVIS_TAG").run {
         if (isNullOrBlank()) null else this
     }
+

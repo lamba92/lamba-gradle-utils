@@ -1,7 +1,9 @@
 package com.github.lamba92.gradle.utils
 
 import com.jfrog.bintray.gradle.BintrayExtension
+import groovy.lang.Closure
 import org.gradle.api.Project
+import org.gradle.kotlin.dsl.KotlinClosure1
 import org.gradle.kotlin.dsl.closureOf
 import org.gradle.kotlin.dsl.delegateClosureOf
 import org.hidetake.groovy.ssh.core.Remote
@@ -65,6 +67,6 @@ fun SessionHandler.put(src: ByteArray, dst: String) {
 }
 
 fun SessionHandler.put(src: File, dst: String, filter: (File) -> Boolean = { true }) {
-    put(hashMapOf("from" to src, "into" to dst, "filter" to filter))
+    put(hashMapOf("from" to src, "into" to dst, "filter" to KotlinClosure1(filter)))
 }
 
